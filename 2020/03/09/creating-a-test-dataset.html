@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="shortcut icon" type="image/x-icon" href="/fastpages/assets/icons/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Title | fastpages</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Title" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="summary" />
+<meta property="og:description" content="summary" />
+<link rel="canonical" href="https://dgunning.github.io/fastpages/2020/03/09/creating-a-test-dataset.html" />
+<meta property="og:url" content="https://dgunning.github.io/fastpages/2020/03/09/creating-a-test-dataset.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-09T00:00:00-05:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://dgunning.github.io/fastpages/2020/03/09/creating-a-test-dataset.html"},"description":"summary","@type":"BlogPosting","url":"https://dgunning.github.io/fastpages/2020/03/09/creating-a-test-dataset.html","headline":"Title","dateModified":"2020-03-09T00:00:00-05:00","datePublished":"2020-03-09T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/fastpages/assets/main.css">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://dgunning.github.io/fastpages/feed.xml" title="fastpages" />
+
+  <script>
+  function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+  }
+  window.onload = wrap_img;
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      // add link icon to anchor tags
+      var elem = document.querySelectorAll(".anchor-link")
+      elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+      // remove paragraph tags in rendered toc (happens from notebooks)
+      var toctags = document.querySelectorAll(".toc-entry")
+      toctags.forEach(e => (e.firstElementChild.innerText = e.firstElementChild.innerText.replace('¶', '')))
+    });
+  </script>
+</head><body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a><a class="page-link" href="/fastpages/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="page-description">summary</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-03-09T00:00:00-05:00" itemprop="datePublished">
+        Mar 9, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+<a href="https://github.com/dgunning/fastpages/tree/master/_notebooks/2020-03-09-creating-a-test-dataset.ipynb" role="button">
+    <img class="notebook-badge-image" src="/fastpages/assets/badges/github.svg" alt="View On GitHub">
+</a>
+</div><div class="px-2">
+    <a href="https://colab.research.google.com/github/dgunning/fastpages/blob/master/_notebooks/2020-03-09-creating-a-test-dataset.ipynb">
+        <img class="notebook-badge-image" src="/fastpages/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-03-09-creating-a-test-dataset.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Creating-a-Test-Dataset-for-Classification">Creating a Test Dataset for Classification<a class="anchor-link" href="#Creating-a-Test-Dataset-for-Classification"> </a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-a-Dataset-for-Classification">Create a Dataset for Classification<a class="anchor-link" href="#Create-a-Dataset-for-Classification"> </a></h2><p>To illustrate ML classification we will first generate a dataset.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="make_classification">make_classification<a class="anchor-link" href="#make_classification"> </a></h3><p><strong>Scikit-learn</strong> has a utility function to generate test data for classification called <code>make_classification</code>. With it you can generate a numpy array with <em>features</em> along with another array with <em>predicted classes</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Create-a-classification-dataframe">Create a classification dataframe<a class="anchor-link" href="#Create-a-classification-dataframe"> </a></h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
+                                     <span class="n">n_informative</span><span class="o">=</span><span class="n">n_informative</span><span class="p">,</span> 
+                                     <span class="n">n_redundant</span><span class="o">=</span><span class="n">n_redundant</span><span class="p">,</span> 
+                                     <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> 
+                                     <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
+                                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">tseries</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">BDay</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Info</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_informative</span><span class="p">)]</span> <span class="o">+</span> \
+              <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Redun</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_redundant</span><span class="p">)]</span> <span class="o">+</span> \
+              <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Noise</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_features</span> <span class="o">-</span> <span class="p">(</span><span class="n">n_informative</span> <span class="o">+</span> <span class="n">n_redundant</span><span class="p">))]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">target</span>
+    
+<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-features">The features<a class="anchor-link" href="#The-features"> </a></h3><p>The generated dataframe contains 10 features.</p>
+<ul>
+<li><strong>Informative features</strong> These are informative features, meaning features that have a predictive relationship with the target</li>
+<li><strong>Redundant features</strong> These features are generated as linear random combinations of the informative features</li>
+<li><strong>Noise</strong> These are just noise, and should have no predictive power</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Info0</th>
+      <th>Info1</th>
+      <th>Info2</th>
+      <th>Info3</th>
+      <th>Info4</th>
+      <th>Info5</th>
+      <th>Redun0</th>
+      <th>Redun1</th>
+      <th>Noise0</th>
+      <th>Noise1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-05-09</th>
+      <td>-0.837671</td>
+      <td>1.669862</td>
+      <td>1.216492</td>
+      <td>2.102211</td>
+      <td>-3.835775</td>
+      <td>6.585448</td>
+      <td>2.714777</td>
+      <td>0.467635</td>
+      <td>1.999206</td>
+      <td>0.106072</td>
+    </tr>
+    <tr>
+      <th>2016-05-10</th>
+      <td>-0.169175</td>
+      <td>-1.397993</td>
+      <td>0.045350</td>
+      <td>2.000519</td>
+      <td>-2.109422</td>
+      <td>1.607660</td>
+      <td>-1.731406</td>
+      <td>0.649270</td>
+      <td>2.300643</td>
+      <td>3.699819</td>
+    </tr>
+    <tr>
+      <th>2016-05-11</th>
+      <td>-0.352642</td>
+      <td>-0.660572</td>
+      <td>-1.569780</td>
+      <td>3.698225</td>
+      <td>2.560158</td>
+      <td>3.156547</td>
+      <td>1.309530</td>
+      <td>0.762749</td>
+      <td>2.381795</td>
+      <td>-0.005944</td>
+    </tr>
+    <tr>
+      <th>2016-05-12</th>
+      <td>0.224075</td>
+      <td>-1.981616</td>
+      <td>-0.287805</td>
+      <td>-1.047755</td>
+      <td>1.514996</td>
+      <td>-1.984338</td>
+      <td>0.163567</td>
+      <td>0.379838</td>
+      <td>1.839880</td>
+      <td>3.341632</td>
+    </tr>
+    <tr>
+      <th>2016-05-13</th>
+      <td>0.171056</td>
+      <td>2.283085</td>
+      <td>1.673806</td>
+      <td>-0.889547</td>
+      <td>-1.191857</td>
+      <td>1.001632</td>
+      <td>-2.454782</td>
+      <td>0.295643</td>
+      <td>2.640628</td>
+      <td>-0.325261</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-03-02</th>
+      <td>-1.699329</td>
+      <td>-2.764829</td>
+      <td>-0.265345</td>
+      <td>0.778363</td>
+      <td>-2.016183</td>
+      <td>-0.236014</td>
+      <td>-1.197534</td>
+      <td>0.351709</td>
+      <td>2.434775</td>
+      <td>3.124586</td>
+    </tr>
+    <tr>
+      <th>2020-03-03</th>
+      <td>-0.914414</td>
+      <td>2.335982</td>
+      <td>0.856029</td>
+      <td>-0.423509</td>
+      <td>-0.546396</td>
+      <td>0.821092</td>
+      <td>-0.874792</td>
+      <td>0.632176</td>
+      <td>-0.405551</td>
+      <td>-2.480377</td>
+    </tr>
+    <tr>
+      <th>2020-03-04</th>
+      <td>0.882539</td>
+      <td>1.661710</td>
+      <td>0.838825</td>
+      <td>0.551954</td>
+      <td>-0.555205</td>
+      <td>2.375841</td>
+      <td>-0.448172</td>
+      <td>0.743824</td>
+      <td>2.088615</td>
+      <td>-0.341239</td>
+    </tr>
+    <tr>
+      <th>2020-03-05</th>
+      <td>-0.396351</td>
+      <td>-1.621114</td>
+      <td>-0.186584</td>
+      <td>-0.567293</td>
+      <td>-0.538820</td>
+      <td>-0.045592</td>
+      <td>1.996148</td>
+      <td>-0.795062</td>
+      <td>1.105916</td>
+      <td>0.741156</td>
+    </tr>
+    <tr>
+      <th>2020-03-06</th>
+      <td>0.461692</td>
+      <td>1.730080</td>
+      <td>0.597695</td>
+      <td>0.629747</td>
+      <td>-1.367928</td>
+      <td>1.604837</td>
+      <td>-1.183647</td>
+      <td>0.561659</td>
+      <td>0.146644</td>
+      <td>-2.253352</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 10 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-target">The target<a class="anchor-link" href="#The-target"> </a></h3><p>The target variable contains the values 0,1,2 - three classes since we specified three classes in the <strong>make_dataset</strong> function call. These are roughly evenly distributed, though wecould have specified a different distribution of values.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Target&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">Target</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>337</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>332</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>331</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+  </div><a class="u-url" href="/fastpages/2020/03/09/creating-a-test-dataset.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">fastpages</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">fastpages</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list">
+  <li><a href="https://github.com/dgunning"><svg class="social svg-icon"><use xlink:href="/fastpages/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dgunning</span></a></li><li><a href="https://www.twitter.com/fastdotai"><svg class="social svg-icon"><use xlink:href="/fastpages/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">fastdotai</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
