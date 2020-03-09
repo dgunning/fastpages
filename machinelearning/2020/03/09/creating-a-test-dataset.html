@@ -80,7 +80,7 @@
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      4 min read
     
 </span></p>
 
@@ -164,7 +164,7 @@
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The data array is a numpy array of shape (<strong>n_samples, n_features</strong>)</p>
+<p>The <strong>data</strong> array is a numpy array of shape (<strong>n_samples, n_features</strong>)</p>
 
 </div>
 </div>
@@ -191,12 +191,12 @@
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(array([[-0.49250734, -0.56512833,  1.34644838, -0.74023749,  0.68843061,
-         -0.97001932, -1.04030453,  0.01550148, -0.43045118, -0.97009488,
-         -0.97950603,  0.29914428],
-        [ 1.61169543,  1.31613403, -0.63130511, -0.49027106,  2.80135421,
-          0.29398278,  0.0893581 ,  2.8170629 ,  0.11898778,  0.56789107,
-         -1.60475764, -2.28835375]]),
+<pre>(array([[-0.4612965 ,  0.8004282 ,  1.38609147, -0.35164617, -0.78843056,
+          0.54899915,  1.66629088,  1.09439863, -0.3962506 , -0.99175602,
+          0.84391241,  0.06052275],
+        [ 0.24933674, -0.97226066,  1.77724703,  1.87447093, -0.33223171,
+         -0.37330209,  0.71320336,  1.16970507,  0.09198356, -0.60119177,
+          0.00714536,  0.85272937]]),
  (100, 12))</pre>
 </div>
 
@@ -210,7 +210,7 @@
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The target is a numpy array of shape (<strong>n_samples</strong>). The values will be 0 or 1 because by default <strong>n_classes</strong> is 2</p>
+<p>The <strong>target</strong> is a numpy array of shape (<strong>n_samples</strong>). The values will be 0 or 1 because by default <strong>n_classes</strong> is 2</p>
 
 </div>
 </div>
@@ -237,11 +237,11 @@
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(array([1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1,
-        1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0,
-        1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0,
-        1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0,
-        1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0]),
+<pre>(array([1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1,
+        0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0,
+        0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1,
+        0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0]),
  (100,))</pre>
 </div>
 
@@ -255,7 +255,98 @@
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Create-a-classification-dataframe">Create a classification dataframe<a class="anchor-link" href="#Create-a-classification-dataframe"> </a></h3>
+<h3 id="Training-a-RandomForestClassifier">Training a RandomForestClassifier<a class="anchor-link" href="#Training-a-RandomForestClassifier"> </a></h3><p>Now that we have the data, we can train a classifier and use it to predict a label.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
+                       criterion=&#39;gini&#39;, max_depth=2, max_features=&#39;auto&#39;,
+                       max_leaf_nodes=None, max_samples=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=0, verbose=0,
+                       warm_start=False)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Predicting-an-output-label">Predicting an output label<a class="anchor-link" href="#Predicting-an-output-label"> </a></h3><p>After training we predict by passing in a data array. For simplicity we just choose one of the data values and we get a predicted label. This is not groundbreaking machine learning, but it shows how to quickly get a dataset that you can use to try different machine learning algorithms.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="mi">90</span><span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-a-classification-dataframe">Create a classification dataframe<a class="anchor-link" href="#Create-a-classification-dataframe"> </a></h2><p>The downside of the <code>make_classification</code> function is that it create numpy arrays without meaningful feature names. The bigger problem is that the features have different aspects - some are informative, others are redundant, or simply plain noise, without any indicator of which is which. To improve on it you can create dataframes, which allow for meaningful names that help in analysis and explainability.</p>
+
 </div>
 </div>
 </div>
