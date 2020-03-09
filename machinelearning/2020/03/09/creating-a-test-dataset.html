@@ -80,7 +80,7 @@
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -127,7 +127,8 @@
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Create-a-Dataset-for-Classification">Create a Dataset for Classification<a class="anchor-link" href="#Create-a-Dataset-for-Classification"> </a></h2><p>To illustrate ML classification we will first generate a dataset.</p>
+<p>Machine learning algorithms are fairly easy to use if you have data that matches exactly what the algorithms are designed for. To get going with an ML project with generic data, you could generate the data in the exact shape for your ML project. For example, if you want to do classification, then you will need a target columns with the predicted classes, and you will need a dataset with the features that could predict these classes.</p>
+<p>If your machine leaning project is in Python, then the best way to start is with <strong>scikit-learn</strong>. This easy to use yet powerful library also has convenience functiosn to generate test data, one of which is called <strong>make_classification</strong>.</p>
 
 </div>
 </div>
@@ -152,7 +153,10 @@
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
                                      <span class="n">n_informative</span><span class="o">=</span><span class="n">n_informative</span><span class="p">,</span> 
                                      <span class="n">n_redundant</span><span class="o">=</span><span class="n">n_redundant</span><span class="p">,</span> 
@@ -167,7 +171,7 @@
     <span class="n">target</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">target</span>
     
-<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -236,75 +240,63 @@
       <th>Info5</th>
       <th>Redun0</th>
       <th>Redun1</th>
-      <th>Noise0</th>
-      <th>Noise1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2016-05-09</th>
-      <td>-0.837671</td>
-      <td>1.669862</td>
-      <td>1.216492</td>
-      <td>2.102211</td>
-      <td>-3.835775</td>
-      <td>6.585448</td>
-      <td>2.714777</td>
-      <td>0.467635</td>
-      <td>1.999206</td>
-      <td>0.106072</td>
+      <td>3.728173</td>
+      <td>-5.004847</td>
+      <td>1.980065</td>
+      <td>2.686836</td>
+      <td>-1.551730</td>
+      <td>1.810620</td>
+      <td>-2.581577</td>
+      <td>0.842732</td>
     </tr>
     <tr>
       <th>2016-05-10</th>
-      <td>-0.169175</td>
-      <td>-1.397993</td>
-      <td>0.045350</td>
-      <td>2.000519</td>
-      <td>-2.109422</td>
-      <td>1.607660</td>
-      <td>-1.731406</td>
-      <td>0.649270</td>
-      <td>2.300643</td>
-      <td>3.699819</td>
+      <td>1.524033</td>
+      <td>-3.643525</td>
+      <td>2.322809</td>
+      <td>3.942553</td>
+      <td>2.818465</td>
+      <td>2.949274</td>
+      <td>3.403136</td>
+      <td>-0.521124</td>
     </tr>
     <tr>
       <th>2016-05-11</th>
-      <td>-0.352642</td>
-      <td>-0.660572</td>
-      <td>-1.569780</td>
-      <td>3.698225</td>
-      <td>2.560158</td>
-      <td>3.156547</td>
-      <td>1.309530</td>
-      <td>0.762749</td>
-      <td>2.381795</td>
-      <td>-0.005944</td>
+      <td>-0.352715</td>
+      <td>0.966715</td>
+      <td>-3.196505</td>
+      <td>-1.948132</td>
+      <td>1.145954</td>
+      <td>-0.102820</td>
+      <td>0.153282</td>
+      <td>-0.417418</td>
     </tr>
     <tr>
       <th>2016-05-12</th>
-      <td>0.224075</td>
-      <td>-1.981616</td>
-      <td>-0.287805</td>
-      <td>-1.047755</td>
-      <td>1.514996</td>
-      <td>-1.984338</td>
-      <td>0.163567</td>
-      <td>0.379838</td>
-      <td>1.839880</td>
-      <td>3.341632</td>
+      <td>-1.348569</td>
+      <td>1.987818</td>
+      <td>-1.073890</td>
+      <td>0.019679</td>
+      <td>-1.318597</td>
+      <td>1.555168</td>
+      <td>0.599463</td>
+      <td>0.360419</td>
     </tr>
     <tr>
       <th>2016-05-13</th>
-      <td>0.171056</td>
-      <td>2.283085</td>
-      <td>1.673806</td>
-      <td>-0.889547</td>
-      <td>-1.191857</td>
-      <td>1.001632</td>
-      <td>-2.454782</td>
-      <td>0.295643</td>
-      <td>2.640628</td>
-      <td>-0.325261</td>
+      <td>-1.188771</td>
+      <td>1.940679</td>
+      <td>-1.090539</td>
+      <td>-0.158189</td>
+      <td>-0.907717</td>
+      <td>1.253296</td>
+      <td>0.649502</td>
+      <td>0.626345</td>
     </tr>
     <tr>
       <th>...</th>
@@ -316,77 +308,65 @@
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>2020-03-02</th>
-      <td>-1.699329</td>
-      <td>-2.764829</td>
-      <td>-0.265345</td>
-      <td>0.778363</td>
-      <td>-2.016183</td>
-      <td>-0.236014</td>
-      <td>-1.197534</td>
-      <td>0.351709</td>
-      <td>2.434775</td>
-      <td>3.124586</td>
+      <td>-3.008902</td>
+      <td>4.285379</td>
+      <td>-0.289713</td>
+      <td>-1.989447</td>
+      <td>-3.866660</td>
+      <td>1.850734</td>
+      <td>-3.256944</td>
+      <td>3.326776</td>
     </tr>
     <tr>
       <th>2020-03-03</th>
-      <td>-0.914414</td>
-      <td>2.335982</td>
-      <td>0.856029</td>
-      <td>-0.423509</td>
-      <td>-0.546396</td>
-      <td>0.821092</td>
-      <td>-0.874792</td>
-      <td>0.632176</td>
-      <td>-0.405551</td>
-      <td>-2.480377</td>
+      <td>-1.684865</td>
+      <td>2.901418</td>
+      <td>-1.215915</td>
+      <td>0.628505</td>
+      <td>-1.353135</td>
+      <td>2.346419</td>
+      <td>1.911456</td>
+      <td>1.164642</td>
     </tr>
     <tr>
       <th>2020-03-04</th>
-      <td>0.882539</td>
-      <td>1.661710</td>
-      <td>0.838825</td>
-      <td>0.551954</td>
-      <td>-0.555205</td>
-      <td>2.375841</td>
-      <td>-0.448172</td>
-      <td>0.743824</td>
-      <td>2.088615</td>
-      <td>-0.341239</td>
+      <td>-0.012789</td>
+      <td>0.462547</td>
+      <td>1.147512</td>
+      <td>0.654661</td>
+      <td>-0.337346</td>
+      <td>-1.517129</td>
+      <td>1.040698</td>
+      <td>-0.432503</td>
     </tr>
     <tr>
       <th>2020-03-05</th>
-      <td>-0.396351</td>
-      <td>-1.621114</td>
-      <td>-0.186584</td>
-      <td>-0.567293</td>
-      <td>-0.538820</td>
-      <td>-0.045592</td>
-      <td>1.996148</td>
-      <td>-0.795062</td>
-      <td>1.105916</td>
-      <td>0.741156</td>
+      <td>-2.385096</td>
+      <td>2.855828</td>
+      <td>0.704913</td>
+      <td>-1.086289</td>
+      <td>-1.396062</td>
+      <td>1.254561</td>
+      <td>-1.334015</td>
+      <td>2.461928</td>
     </tr>
     <tr>
       <th>2020-03-06</th>
-      <td>0.461692</td>
-      <td>1.730080</td>
-      <td>0.597695</td>
-      <td>0.629747</td>
-      <td>-1.367928</td>
-      <td>1.604837</td>
-      <td>-1.183647</td>
-      <td>0.561659</td>
-      <td>0.146644</td>
-      <td>-2.253352</td>
+      <td>0.381212</td>
+      <td>-0.000849</td>
+      <td>-0.544079</td>
+      <td>1.535524</td>
+      <td>-2.424462</td>
+      <td>2.837563</td>
+      <td>-0.220825</td>
+      <td>0.947196</td>
     </tr>
   </tbody>
 </table>
-<p>1000 rows × 10 columns</p>
+<p>1000 rows × 8 columns</p>
 </div>
 </div>
 
@@ -450,15 +430,15 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>337</td>
+      <td>334</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>332</td>
+      <td>333</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>331</td>
+      <td>333</td>
     </tr>
   </tbody>
 </table>
