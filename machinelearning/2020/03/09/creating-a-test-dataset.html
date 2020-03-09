@@ -80,7 +80,7 @@
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -135,11 +135,124 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="make_classification">make_classification<a class="anchor-link" href="#make_classification"> </a></h3><p><strong>Scikit-learn</strong> has a utility function to generate test data for classification called <code>make_classification</code>. With it you can generate a numpy array with <em>features</em> along with another array with <em>predicted classes</em>.</p>
+<h3 id="make_classification">make_classification<a class="anchor-link" href="#make_classification"> </a></h3><p><strong>Scikit-learn</strong> has a utility function to generate test data for classification called <code>make_classification</code>. With it you can generate a numpy array with <em>features</em> along with another array with <em>predicted classes</em>. This function is in the datasets package so to use it you would do</p>
+<p><code>from sklearn.datasets import make_classification</code></p>
+<p><code>data, target = make_classification(...)</code></p>
+<p>and you will get the data and the target with some relationship between the two sufficient to do some machine learning. Here is an example</p>
 
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+
+<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data array is a numpy array of shape (<strong>n_samples, n_features</strong>)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(array([[-0.49250734, -0.56512833,  1.34644838, -0.74023749,  0.68843061,
+         -0.97001932, -1.04030453,  0.01550148, -0.43045118, -0.97009488,
+         -0.97950603,  0.29914428],
+        [ 1.61169543,  1.31613403, -0.63130511, -0.49027106,  2.80135421,
+          0.29398278,  0.0893581 ,  2.8170629 ,  0.11898778,  0.56789107,
+         -1.60475764, -2.28835375]]),
+ (100, 12))</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The target is a numpy array of shape (<strong>n_samples</strong>). The values will be 0 or 1 because by default <strong>n_classes</strong> is 2</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">target</span><span class="p">,</span> <span class="n">target</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(array([1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1,
+        1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0,
+        1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0,
+        1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0,
+        1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0]),
+ (100,))</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Create-a-classification-dataframe">Create a classification dataframe<a class="anchor-link" href="#Create-a-classification-dataframe"> </a></h3>
@@ -244,59 +357,59 @@
   </thead>
   <tbody>
     <tr>
-      <th>2016-05-09</th>
-      <td>0.086170</td>
-      <td>0.263946</td>
-      <td>1.147196</td>
-      <td>0.339872</td>
-      <td>-1.649331</td>
-      <td>-1.385724</td>
-      <td>1.350134</td>
-      <td>0.895231</td>
-    </tr>
-    <tr>
       <th>2016-05-10</th>
-      <td>-0.519554</td>
-      <td>1.474023</td>
-      <td>1.574778</td>
-      <td>-0.404883</td>
-      <td>-1.380555</td>
-      <td>-1.680931</td>
-      <td>2.586144</td>
-      <td>1.771411</td>
+      <td>-0.944</td>
+      <td>-1.358</td>
+      <td>-1.274</td>
+      <td>0.465</td>
+      <td>1.308</td>
+      <td>0.414</td>
+      <td>0.398</td>
+      <td>-0.483</td>
     </tr>
     <tr>
       <th>2016-05-11</th>
-      <td>-2.309424</td>
-      <td>0.404823</td>
-      <td>-1.276600</td>
-      <td>-0.973535</td>
-      <td>3.035280</td>
-      <td>0.491335</td>
-      <td>0.854342</td>
-      <td>-0.340997</td>
+      <td>1.263</td>
+      <td>1.536</td>
+      <td>-0.006</td>
+      <td>-0.588</td>
+      <td>1.532</td>
+      <td>0.720</td>
+      <td>0.019</td>
+      <td>0.790</td>
     </tr>
     <tr>
       <th>2016-05-12</th>
-      <td>1.463149</td>
-      <td>1.588531</td>
-      <td>1.150813</td>
-      <td>0.681997</td>
-      <td>-1.027532</td>
-      <td>1.080704</td>
-      <td>-0.465189</td>
-      <td>1.247441</td>
+      <td>0.755</td>
+      <td>0.700</td>
+      <td>-1.725</td>
+      <td>0.281</td>
+      <td>-1.483</td>
+      <td>-1.000</td>
+      <td>-0.296</td>
+      <td>0.450</td>
     </tr>
     <tr>
       <th>2016-05-13</th>
-      <td>0.961113</td>
-      <td>2.335966</td>
-      <td>-1.425342</td>
-      <td>0.219535</td>
-      <td>1.118655</td>
-      <td>0.546441</td>
-      <td>-1.477135</td>
-      <td>-1.250334</td>
+      <td>0.589</td>
+      <td>1.267</td>
+      <td>0.410</td>
+      <td>-1.858</td>
+      <td>-1.337</td>
+      <td>0.468</td>
+      <td>0.317</td>
+      <td>0.201</td>
+    </tr>
+    <tr>
+      <th>2016-05-16</th>
+      <td>0.489</td>
+      <td>-1.645</td>
+      <td>-0.387</td>
+      <td>0.396</td>
+      <td>-1.312</td>
+      <td>-1.753</td>
+      <td>0.086</td>
+      <td>0.678</td>
     </tr>
     <tr>
       <th>...</th>
@@ -310,59 +423,59 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>2020-03-02</th>
-      <td>-2.323392</td>
-      <td>0.658851</td>
-      <td>1.093550</td>
-      <td>0.446788</td>
-      <td>-1.665774</td>
-      <td>-2.595020</td>
-      <td>2.448741</td>
-      <td>0.270443</td>
-    </tr>
-    <tr>
       <th>2020-03-03</th>
-      <td>0.573351</td>
-      <td>1.780362</td>
-      <td>-1.571254</td>
-      <td>1.568883</td>
-      <td>1.301866</td>
-      <td>1.092169</td>
-      <td>-2.063039</td>
-      <td>-1.640765</td>
+      <td>-1.128</td>
+      <td>-1.246</td>
+      <td>0.636</td>
+      <td>1.509</td>
+      <td>0.784</td>
+      <td>-0.160</td>
+      <td>0.776</td>
+      <td>-0.665</td>
     </tr>
     <tr>
       <th>2020-03-04</th>
-      <td>2.059537</td>
-      <td>2.106828</td>
-      <td>-0.022051</td>
-      <td>1.284990</td>
-      <td>-1.075659</td>
-      <td>-1.453897</td>
-      <td>0.309927</td>
-      <td>0.133524</td>
+      <td>1.748</td>
+      <td>-0.734</td>
+      <td>0.256</td>
+      <td>1.331</td>
+      <td>0.093</td>
+      <td>-2.095</td>
+      <td>2.344</td>
+      <td>1.587</td>
     </tr>
     <tr>
       <th>2020-03-05</th>
-      <td>2.237442</td>
-      <td>0.569487</td>
-      <td>-1.701149</td>
-      <td>-1.311770</td>
-      <td>0.942068</td>
-      <td>-0.053449</td>
-      <td>-1.453072</td>
-      <td>-1.252078</td>
+      <td>-2.043</td>
+      <td>-1.482</td>
+      <td>-0.079</td>
+      <td>-2.589</td>
+      <td>0.356</td>
+      <td>2.215</td>
+      <td>-1.444</td>
+      <td>-1.404</td>
     </tr>
     <tr>
       <th>2020-03-06</th>
-      <td>-0.012971</td>
-      <td>0.566903</td>
-      <td>0.843907</td>
-      <td>-0.287792</td>
-      <td>-1.568140</td>
-      <td>3.091515</td>
-      <td>-3.610034</td>
-      <td>-0.964634</td>
+      <td>-1.213</td>
+      <td>0.298</td>
+      <td>-0.405</td>
+      <td>0.920</td>
+      <td>-0.055</td>
+      <td>0.456</td>
+      <td>-2.922</td>
+      <td>-1.053</td>
+    </tr>
+    <tr>
+      <th>2020-03-09</th>
+      <td>-0.555</td>
+      <td>2.732</td>
+      <td>0.549</td>
+      <td>0.180</td>
+      <td>1.963</td>
+      <td>2.230</td>
+      <td>-1.877</td>
+      <td>-0.918</td>
     </tr>
   </tbody>
 </table>
