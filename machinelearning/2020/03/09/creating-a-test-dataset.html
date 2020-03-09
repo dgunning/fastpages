@@ -171,7 +171,7 @@
     <span class="n">target</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">target</span>
     
-<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -183,7 +183,7 @@
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-features">The features<a class="anchor-link" href="#The-features"> </a></h3><p>The generated dataframe contains 10 features.</p>
+<h3 id="The-features">The features<a class="anchor-link" href="#The-features"> </a></h3><p>The generated dataframe contains 8 columns.</p>
 <ul>
 <li><strong>Informative features</strong> These are informative features, meaning features that have a predictive relationship with the target</li>
 <li><strong>Redundant features</strong> These features are generated as linear random combinations of the informative features</li>
@@ -236,67 +236,67 @@
       <th>Info1</th>
       <th>Info2</th>
       <th>Info3</th>
-      <th>Info4</th>
-      <th>Info5</th>
       <th>Redun0</th>
       <th>Redun1</th>
+      <th>Noise0</th>
+      <th>Noise1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2016-05-09</th>
-      <td>3.728173</td>
-      <td>-5.004847</td>
-      <td>1.980065</td>
-      <td>2.686836</td>
-      <td>-1.551730</td>
-      <td>1.810620</td>
-      <td>-2.581577</td>
-      <td>0.842732</td>
+      <td>0.086170</td>
+      <td>0.263946</td>
+      <td>1.147196</td>
+      <td>0.339872</td>
+      <td>-1.649331</td>
+      <td>-1.385724</td>
+      <td>1.350134</td>
+      <td>0.895231</td>
     </tr>
     <tr>
       <th>2016-05-10</th>
-      <td>1.524033</td>
-      <td>-3.643525</td>
-      <td>2.322809</td>
-      <td>3.942553</td>
-      <td>2.818465</td>
-      <td>2.949274</td>
-      <td>3.403136</td>
-      <td>-0.521124</td>
+      <td>-0.519554</td>
+      <td>1.474023</td>
+      <td>1.574778</td>
+      <td>-0.404883</td>
+      <td>-1.380555</td>
+      <td>-1.680931</td>
+      <td>2.586144</td>
+      <td>1.771411</td>
     </tr>
     <tr>
       <th>2016-05-11</th>
-      <td>-0.352715</td>
-      <td>0.966715</td>
-      <td>-3.196505</td>
-      <td>-1.948132</td>
-      <td>1.145954</td>
-      <td>-0.102820</td>
-      <td>0.153282</td>
-      <td>-0.417418</td>
+      <td>-2.309424</td>
+      <td>0.404823</td>
+      <td>-1.276600</td>
+      <td>-0.973535</td>
+      <td>3.035280</td>
+      <td>0.491335</td>
+      <td>0.854342</td>
+      <td>-0.340997</td>
     </tr>
     <tr>
       <th>2016-05-12</th>
-      <td>-1.348569</td>
-      <td>1.987818</td>
-      <td>-1.073890</td>
-      <td>0.019679</td>
-      <td>-1.318597</td>
-      <td>1.555168</td>
-      <td>0.599463</td>
-      <td>0.360419</td>
+      <td>1.463149</td>
+      <td>1.588531</td>
+      <td>1.150813</td>
+      <td>0.681997</td>
+      <td>-1.027532</td>
+      <td>1.080704</td>
+      <td>-0.465189</td>
+      <td>1.247441</td>
     </tr>
     <tr>
       <th>2016-05-13</th>
-      <td>-1.188771</td>
-      <td>1.940679</td>
-      <td>-1.090539</td>
-      <td>-0.158189</td>
-      <td>-0.907717</td>
-      <td>1.253296</td>
-      <td>0.649502</td>
-      <td>0.626345</td>
+      <td>0.961113</td>
+      <td>2.335966</td>
+      <td>-1.425342</td>
+      <td>0.219535</td>
+      <td>1.118655</td>
+      <td>0.546441</td>
+      <td>-1.477135</td>
+      <td>-1.250334</td>
     </tr>
     <tr>
       <th>...</th>
@@ -311,58 +311,58 @@
     </tr>
     <tr>
       <th>2020-03-02</th>
-      <td>-3.008902</td>
-      <td>4.285379</td>
-      <td>-0.289713</td>
-      <td>-1.989447</td>
-      <td>-3.866660</td>
-      <td>1.850734</td>
-      <td>-3.256944</td>
-      <td>3.326776</td>
+      <td>-2.323392</td>
+      <td>0.658851</td>
+      <td>1.093550</td>
+      <td>0.446788</td>
+      <td>-1.665774</td>
+      <td>-2.595020</td>
+      <td>2.448741</td>
+      <td>0.270443</td>
     </tr>
     <tr>
       <th>2020-03-03</th>
-      <td>-1.684865</td>
-      <td>2.901418</td>
-      <td>-1.215915</td>
-      <td>0.628505</td>
-      <td>-1.353135</td>
-      <td>2.346419</td>
-      <td>1.911456</td>
-      <td>1.164642</td>
+      <td>0.573351</td>
+      <td>1.780362</td>
+      <td>-1.571254</td>
+      <td>1.568883</td>
+      <td>1.301866</td>
+      <td>1.092169</td>
+      <td>-2.063039</td>
+      <td>-1.640765</td>
     </tr>
     <tr>
       <th>2020-03-04</th>
-      <td>-0.012789</td>
-      <td>0.462547</td>
-      <td>1.147512</td>
-      <td>0.654661</td>
-      <td>-0.337346</td>
-      <td>-1.517129</td>
-      <td>1.040698</td>
-      <td>-0.432503</td>
+      <td>2.059537</td>
+      <td>2.106828</td>
+      <td>-0.022051</td>
+      <td>1.284990</td>
+      <td>-1.075659</td>
+      <td>-1.453897</td>
+      <td>0.309927</td>
+      <td>0.133524</td>
     </tr>
     <tr>
       <th>2020-03-05</th>
-      <td>-2.385096</td>
-      <td>2.855828</td>
-      <td>0.704913</td>
-      <td>-1.086289</td>
-      <td>-1.396062</td>
-      <td>1.254561</td>
-      <td>-1.334015</td>
-      <td>2.461928</td>
+      <td>2.237442</td>
+      <td>0.569487</td>
+      <td>-1.701149</td>
+      <td>-1.311770</td>
+      <td>0.942068</td>
+      <td>-0.053449</td>
+      <td>-1.453072</td>
+      <td>-1.252078</td>
     </tr>
     <tr>
       <th>2020-03-06</th>
-      <td>0.381212</td>
-      <td>-0.000849</td>
-      <td>-0.544079</td>
-      <td>1.535524</td>
-      <td>-2.424462</td>
-      <td>2.837563</td>
-      <td>-0.220825</td>
-      <td>0.947196</td>
+      <td>-0.012971</td>
+      <td>0.566903</td>
+      <td>0.843907</td>
+      <td>-0.287792</td>
+      <td>-1.568140</td>
+      <td>3.091515</td>
+      <td>-3.610034</td>
+      <td>-0.964634</td>
     </tr>
   </tbody>
 </table>
