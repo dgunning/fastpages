@@ -80,7 +80,7 @@
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -131,9 +131,40 @@
 </div>
     
 
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">![](</span>/fastpages/images/copied_from_nb/../images/model_fingerprints.png<span class="o">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/bin/sh: 1: Syntax error: word unexpected (expecting &#34;)&#34;)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Machine learning models can often be hard to understand and explain, in terms of how the model works to produce its predictions. Often we need to show how each of the features impact on the predictions. This is not just a theoretical problem - there may be laws in the future that will compel us to be able to explain how and why models arreived at their values.</p>
+<p>Machine learning models can often be hard to understand and explain, in terms of how the model works to produce its predictions. Often we need to show how each of the features impact on the predictions. This is not just a theoretical problem - there may be laws in the future that will compel us to be able to explain how and why models arrived at their values.</p>
 <p>A model fingerprint is an explanation of a model that describes what effect each of the model's features have on the target. This allows you to see inside the model at each feature, and get an explanation on that feature and how it impacts the model. The feature effects are broken down into three types</p>
 <ul>
 <li><strong>linear</strong> a change in the feature results in a constant change in the target</li>
@@ -146,7 +177,7 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model-Fingerprint">Model Fingerprint<a class="anchor-link" href="#Model-Fingerprint"> </a></h2><p>The implementation of model fingerprints is from the <strong>mlfinlab</strong> library. mlfinlab depends on scipy, numba and a few other scientific python libraries that are tricky to install locally, but is installable with no problem on Google Colab.</p>
+<h2 id="Model-Fingerprint">Model Fingerprint<a class="anchor-link" href="#Model-Fingerprint"> </a></h2><p>The implementation of model fingerprints is from the <strong>mlfinlab</strong> library. <strong>mlfinlab</strong> depends on scipy, numba and a few other scientific python libraries that are tricky to install locally, but is installable with no problem on Google Colab.</p>
 
 </div>
 </div>
@@ -158,10 +189,50 @@
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install mlfinlab
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># !pip install mlfinlab</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Defaulting to user installation because normal site-packages is not writeable
+Collecting mlfinlab
+  Using cached mlfinlab-0.7.1-py3-none-any.whl (447 kB)
+Processing /home/dwight/.cache/pip/wheels/2d/a3/0b/e0bf8cf6527c9cd7d79d4f974a88adc8fa038b1c896ed6d046/scipy-1.3.1-cp38-cp38-linux_x86_64.whl
+Processing /home/dwight/.cache/pip/wheels/11/7c/f2/a1043ac78a3deb4b1da3fc69b94e657169ae433191bf4c9b23/numba-0.46.0-cp38-cp38-linux_x86_64.whl
+Collecting pandas==0.25.3
+  Using cached pandas-0.25.3-cp38-cp38-manylinux1_x86_64.whl (10.4 MB)
+Processing /home/dwight/.cache/pip/wheels/50/a7/f7/d987583cd3b9bec683f517206b66b259dfb9b67ee043ce7ac3/scikit_learn-0.21.3-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: numpy==1.17.3 in /home/dwight/.local/lib/python3.8/site-packages (from mlfinlab) (1.17.3)
+Processing /home/dwight/.cache/pip/wheels/85/86/f1/054e7477b5e68f3c4a1258d12ae1c2205d6889283ce631dfe5/matplotlib-3.1.1-cp38-cp38-linux_x86_64.whl
+Processing /home/dwight/.cache/pip/wheels/e1/3d/cd/c11cdd59056c25a948cd2f91440817a72207baadf5d6f5f8b2/xmlrunner-1.7.7-py3-none-any.whl
+Collecting llvmlite&gt;=0.30.0dev0
+  Using cached llvmlite-0.31.0-cp38-cp38-manylinux1_x86_64.whl (20.2 MB)
+Requirement already satisfied: python-dateutil&gt;=2.6.1 in /home/dwight/.local/lib/python3.8/site-packages (from pandas==0.25.3-&gt;mlfinlab) (2.8.0)
+Requirement already satisfied: pytz&gt;=2017.2 in /home/dwight/.local/lib/python3.8/site-packages (from pandas==0.25.3-&gt;mlfinlab) (2019.3)
+Collecting joblib&gt;=0.11
+  Using cached joblib-0.14.1-py2.py3-none-any.whl (294 kB)
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1
+  Using cached pyparsing-2.4.6-py2.py3-none-any.whl (67 kB)
+Collecting cycler&gt;=0.10
+  Using cached cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Collecting kiwisolver&gt;=1.0.1
+  Using cached kiwisolver-1.1.0-cp38-cp38-manylinux1_x86_64.whl (91 kB)
+Requirement already satisfied: six&gt;=1.5 in /home/dwight/.local/lib/python3.8/site-packages (from python-dateutil&gt;=2.6.1-&gt;pandas==0.25.3-&gt;mlfinlab) (1.12.0)
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib==3.1.1-&gt;mlfinlab) (39.0.1)
+Installing collected packages: scipy, llvmlite, numba, pandas, joblib, scikit-learn, pyparsing, cycler, kiwisolver, matplotlib, xmlrunner, mlfinlab
+Successfully installed cycler-0.10.0 joblib-0.14.1 kiwisolver-1.1.0 llvmlite-0.31.0 matplotlib-3.1.1 mlfinlab-0.7.1 numba-0.46.0 pandas-0.25.3 pyparsing-2.4.6 scikit-learn-0.21.3 scipy-1.3.1 xmlrunner-1.7.7
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
