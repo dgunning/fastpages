@@ -6,8 +6,6 @@ layout: home
 search: exclude
 ---
 
-# Dwight Gunning
-
 ![](images/DwightGunningCount.png "https://github.com/fastai/fastpages")
 
 
