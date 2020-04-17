@@ -8,7 +8,7 @@ search: exclude
 
 # Dwight Gunning
 
-![](images/diagram.png "https://github.com/fastai/fastpages")
+![](images/DwightGunningCount.png "https://github.com/fastai/fastpages")
 
 
 # Posts
