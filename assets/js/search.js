@@ -8,7 +8,7 @@ var documents = [{
     "id": 1,
     "url": "https://dgunning.github.io/about/",
     "title": "About Me",
-    "body": "This is where you put the contents of your About page. Like all your pages, it’s in Markdown format. This website is powered by fastpages 1.       a blogging platform that natively supports Jupyter notebooks in addition to other formats.  &#8617;    "
+    "body": "I am a Python Data Scientist and Data Engineer working from Toronto Canada. This website is powered by fastpages 1.       a blogging platform that natively supports Jupyter notebooks in addition to other formats.  &#8617;    "
     }, {
     "id": 2,
     "url": "https://dgunning.github.io/categories/",
