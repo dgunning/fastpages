@@ -6,7 +6,7 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: fastpages
+title: Dwight Gunning
 description: An easy to use blogging platform with support for Jupyter Notebooks.
 github_username: dgunning
 # you can comment the below line out if your repo name is not different than your baseurl
@@ -40,7 +40,7 @@ baseurl: "" # the subpath of your site, e.g. "/blog".
 minima:
   social_links:
     twitter: dwgunning1
-    github: fastai
+    github: dgunning
 
 # Set this to true to get LaTeX math equation support
 use_math: 
@@ -55,7 +55,7 @@ show_image: false
 show_tags: true
 
 # Add your Google Analytics ID here if you have one and want to use it
-google_analytics:
+google_analytics: 
 
 exclude:
   - docker-compose.yml
